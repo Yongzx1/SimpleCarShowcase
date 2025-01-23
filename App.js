@@ -24,7 +24,7 @@ const jdmCars = [
     engine: '2JZ-GTE 3.0L I6',
     power: '276 hp',
     torque: '318 Nm',
-    image: './assets/supras2.png',
+    image: './assets/favicon.png',
   },
   {
     id: '3',
