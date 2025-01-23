@@ -14,7 +14,7 @@ const jdmCars = [
     engine: 'RB26DETT 2.6L I6',
     power: '280 hp',
     torque: '392 Nm',
-    image: './assets/skylines1.png',
+    image: require('./assets/skylines1.png'),
   },
   {
     id: '2',
@@ -24,7 +24,7 @@ const jdmCars = [
     engine: '2JZ-GTE 3.0L I6',
     power: '276 hp',
     torque: '318 Nm',
-    image: './assets/favicon.png',
+    image: require('./assets/favicon.png'),
   },
   {
     id: '3',
@@ -34,7 +34,7 @@ const jdmCars = [
     engine: '13B Rotary Engine',
     power: '276 hp',
     torque: '314 Nm',
-    image: './assets/rx72.png',
+    image: require('./assets/rx72.png'),
   },
 ];
 
@@ -59,7 +59,7 @@ function BrowseScreen({ navigation }) {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={styles.card}>
-            <Image source={{ uri: item.image }} style={styles.image} />
+            <Image source={item.image} style={styles.image} />
             <Text style={styles.carName}>{item.name}</Text>
             <Text>Price: {item.price}</Text>
             <Text>Year: {item.year}</Text>
@@ -80,7 +80,7 @@ function CarDetailsScreen({ route }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{car.name}</Text>
-      <Image source={{ uri: car.image }} style={styles.image} />
+      <Image source={car.image} style={styles.image} />
       <Text>Price: {car.price}</Text>
       <Text>Year: {car.year}</Text>
       <Text>Engine: {car.engine}</Text>
