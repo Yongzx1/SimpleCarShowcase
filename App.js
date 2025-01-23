@@ -11,21 +11,30 @@ const jdmCars = [
     name: 'Nissan Skyline GT-R R34',
     price: '$70,000',
     year: '1999',
-    image: 'https://example.com/skyline.jpg',
+    engine: 'RB26DETT 2.6L I6',
+    power: '280 hp',
+    torque: '392 Nm',
+    image: './assets/skylines1.png',
   },
   {
     id: '2',
     name: 'Toyota Supra MK4',
     price: '$50,000',
     year: '1993',
-    image: 'https://example.com/supra.jpg',
+    engine: '2JZ-GTE 3.0L I6',
+    power: '276 hp',
+    torque: '318 Nm',
+    image: './assets/supras2.png',
   },
   {
     id: '3',
     name: 'Mazda RX-7 FD3S',
     price: '$40,000',
     year: '1992',
-    image: 'https://example.com/rx7.jpg',
+    engine: '13B Rotary Engine',
+    power: '276 hp',
+    torque: '314 Nm',
+    image: './assets/rx72.png',
   },
 ];
 
@@ -41,7 +50,7 @@ function HomeScreen({ navigation }) {
   );
 }
 
-function BrowseScreen() {
+function BrowseScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>JDM Cars</Text>
@@ -54,9 +63,29 @@ function BrowseScreen() {
             <Text style={styles.carName}>{item.name}</Text>
             <Text>Price: {item.price}</Text>
             <Text>Year: {item.year}</Text>
+            <Button
+              title="View Details"
+              onPress={() => navigation.navigate('CarDetails', { car: item })}
+            />
           </View>
         )}
       />
+    </View>
+  );
+}
+
+function CarDetailsScreen({ route }) {
+  const { car } = route.params;
+  
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>{car.name}</Text>
+      <Image source={{ uri: car.image }} style={styles.image} />
+      <Text>Price: {car.price}</Text>
+      <Text>Year: {car.year}</Text>
+      <Text>Engine: {car.engine}</Text>
+      <Text>Power: {car.power}</Text>
+      <Text>Torque: {car.torque}</Text>
     </View>
   );
 }
@@ -67,6 +96,7 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Browse" component={BrowseScreen} />
+        <Stack.Screen name="CarDetails" component={CarDetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
