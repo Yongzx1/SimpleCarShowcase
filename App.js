@@ -77,15 +77,19 @@ const jdmCars = [
 
 function HomeScreen({ navigation }) {
   return (
-    <View style={styles.container}>
+    <View style={styles.homeContainer}>
       {/* JDM Logo */}
       <Image source={require('./assets/jdm3.png')} style={styles.logo} />
-      
+
       <Text style={styles.title}>Welcome to JDM Car Showcase</Text>
       <Button
         title="Browse JDM Cars"
         onPress={() => navigation.navigate('Browse')}
       />
+      {/* Introduction Text */}
+      <Text style={styles.introText}>
+      JDM stands for Japanese domestic market and refers to Japan's home market for vehicles and parts. Strictly speaking, only cars that are made specifically for the Japanese market fall under this term.
+      </Text>
     </View>
   );
 }
@@ -146,16 +150,23 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  homeContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: 'center', // Centers items vertically
+    alignItems: 'center', // Centers items horizontally
     backgroundColor: '#f0f8ff',
+    paddingVertical: 40, // Adds spacing on top and bottom
   },
   title: {
     fontSize: 24,
     marginBottom: 20,
     fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  logo: {
+    width: 200,
+    height: 200,
+    marginBottom: 20,
   },
   card: {
     backgroundColor: '#fff',
@@ -205,5 +216,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginVertical: 5,
     color: '#333',
+  },
+  introText: {
+    fontSize: 16,
+    textAlign: 'center',
+    marginTop: 20,
+    paddingHorizontal: 20,
+    color: '#555',
+    lineHeight: 22,
   },
 });
