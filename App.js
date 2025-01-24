@@ -96,7 +96,7 @@ function HomeScreen({ navigation }) {
 
 function BrowseScreen({ navigation }) {
   return (
-    <View style={styles.container}>
+    <View style={styles.browseContainer}>
       <Text style={styles.title}>JDM Cars</Text>
       <FlatList
         data={jdmCars}
@@ -113,6 +113,7 @@ function BrowseScreen({ navigation }) {
             />
           </View>
         )}
+        contentContainerStyle={styles.browseListContent} // Centering FlatList items
       />
     </View>
   );
@@ -122,7 +123,7 @@ function CarDetailsScreen({ route }) {
   const { car } = route.params;
 
   return (
-    <View style={styles.container}>
+    <View style={styles.detailsContainer}>
       <Text style={styles.title}>{car.name}</Text>
       <Image source={car.image} style={styles.image} />
       <View style={styles.descriptionBox}>
@@ -224,5 +225,43 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     color: '#555',
     lineHeight: 22,
+  },
+  browseContainer: {
+    flex: 1,
+    justifyContent: 'center', // Centers vertically
+    alignItems: 'center', // Centers horizontally
+    backgroundColor: '#f0f8ff', // Match background color with HomeScreen
+    padding: 20, // Padding for the overall screen
+  },
+  browseListContent: {
+    justifyContent: 'center', // Center items vertically
+    alignItems: 'center', // Center items horizontally
+    paddingBottom: 20, // Add space at the bottom for a clean look
+  },
+  detailsContainer: {
+    flex: 1,
+    justifyContent: 'center', // Centers content vertically
+    alignItems: 'center', // Centers content horizontally
+    backgroundColor: '#f0f8ff', // Match background color with other screens
+    padding: 20, // Add padding for spacing
+  },
+  descriptionBox: {
+    backgroundColor: '#fff',
+    padding: 20,
+    marginTop: 20,
+    borderRadius: 10,
+    width: '90%',
+    alignItems: 'center', // Centers text inside the box
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 5,
+    elevation: 3,
+  },
+  descriptionText: {
+    fontSize: 16,
+    marginVertical: 5,
+    textAlign: 'center', // Centers each text line
+    color: '#333',
   },
 });
